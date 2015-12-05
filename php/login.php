@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (!isset($_SESSION["name"])) {
 $user = $_POST["user"];
 $_SESSION["name"] = $user;
 $pass = $_POST["pass"];
@@ -30,6 +31,8 @@ function user_homepage(){
     <h1>login success</h1>
     </html>
 PAGE;
-}
+}}
+else {
+header ("Location: ./dashboard.php");}
 
 ?>
