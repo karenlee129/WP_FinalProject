@@ -57,14 +57,21 @@ if(isset($_POST["cancel"])){
 	}
 }
 
-form();
+if(isset($_POST["ViewSignups"])){
+	unset($_POST["ViewSignups"]);
+	$EventID = $_POST["EventID"];
+}
+
+SignupCancel();
 displayGoing($connect, $username);
 displayNotGoing($connect, $username);
+AddEventButton();
+ViewSignups();
 
-function form(){
+function SignupCancel(){
 	$script = $_SERVER['PHP_SELF'];
 
-	print<<<FORM
+	print<<<SignupCancel
 	<form action = "$script" method = "post">
 	<table border = "0">
 	  <tr>
@@ -78,9 +85,8 @@ function form(){
 	</table>
 	</form>
 	</body>
-FORM;
+SignupCancel;
 }
-
 
 function displayGoing($connect, $username) {
 	print"
@@ -160,6 +166,29 @@ function displayNotGoing($connect, $username) {
 	print"
 	</table>
 	<br/><br/>";
+}
+
+function AddEventButton() {
+	print "<button name = 'AddEvent'>Add Event</button>";
+}
+
+function ViewSignups() {
+	$script = $_SERVER['PHP_SELF'];
+
+	print<<<ViewSignups
+	<form action = "$script" method = "post">
+	<table border = "0">
+	  <tr>
+	  <td> Event ID </td>
+	  <td> <input type = "text" name = "EventID" /> </td>
+	  </tr>
+	  <tr>
+	  <td> <input type = "submit" name = "ViewSignups" value = "Who Signed Up? " /> </td>
+	  </tr>
+	</table>
+	</form>
+	</body>
+ViewSignups;
 }
 
 //close connection to database
