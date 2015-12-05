@@ -1,6 +1,7 @@
 <?php
 session_start();
 $user = $_POST["user"];
+$_SESSION["name"] = $user;
 $pass = $_POST["pass"];
 $user_pass = $user . ':' . $pass;
 $file = fopen("./passwd.txt", "r");
