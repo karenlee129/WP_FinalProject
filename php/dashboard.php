@@ -9,7 +9,8 @@ print <<<TOP
 <title> Dashboard </title>
 </head>
 <body>
-<h1> Welcome to your Dashboard </h1>
+<h1><center>Welcome to your Dashboard </center></h1>
+<br/>
 TOP;
 
 //read password stored not on the web server
@@ -32,26 +33,73 @@ if (empty($connect))
 }
 
 #################################################################################
+$username = "chironly"; 
 
+if(isset($_POST["signup"])){
+	unset($_POST["signup"]);
+	$EventID = $_POST["EventID"];
+	if(strlen($EventID) !==0){
+		$stmt = mysqli_prepare($connect, "insert into Going values (?, ?)");
+		mysqli_stmt_bind_param($stmt, 'ss', $username, $EventID);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+}
+
+if(isset($_POST["cancel"])){
+	unset($_POST["cancel"]);
+	$EventID = $_POST["EventID"];
+	if(strlen($EventID) !==0){
+		$stmt = mysqli_prepare($connect, "delete from Going where Username = ? and EventID = ?");
+		mysqli_stmt_bind_param($stmt, 'ss', $username, $EventID);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}
+}
+
+
+
+form();
 displayGoing($connect);
-
 displayNotGoing($connect);
+
+function form(){
+	$script = $_SERVER['PHP_SELF'];
+
+	print<<<FORM
+	<form action = "$script" method = "post">
+	<table border = "0">
+	  <tr>
+	  <td> Event ID </td>
+	  <td> <input type = "text" name = "EventID" /> </td>
+	  </tr>
+	  <tr>
+	  <td> <input type = "submit" name = "signup" value = "Sign Up" /> </td>
+	  <td> <input type = "submit" name = "cancel" value = "Cancel" /> </td>
+	  </tr>
+	</table>
+	</form>
+	</body>
+FORM;
+}
+
+
 
 function displayGoing($connect) {
 	print"
-	<h3> Events you're signed up for </h3>
-	<table border = '1' width = 80%>
+	<h3><center>Events you're signed up for </center></h3>
+	<table align = 'center' border = '1' width = 80%>
 	<tr>
+	<th>Event ID</th>
 	<th>Event Name</th>
 	<th>Date</th>
 	<th>Start Time</th>
 	<th>End Time</th>
 	<th>Location</th>
-	<th>Cancellation</th>
 	</tr>";
 
 	$going = "
-	SELECT Events.Name, Events.EventDate, Events.StartTime, Events.EndTime, Events.Location
+	SELECT Events.EventID, Events.Name, Events.EventDate, Events.StartTime, Events.EndTime, Events.Location
 	FROM Going INNER JOIN Events ON Going.EventID = Events.EventID
 	WHERE Username = 'chironly'";
 
@@ -66,7 +114,7 @@ function displayGoing($connect) {
 		<td>".$row[2]."</td>
 		<td>".$row[3]."</td>
 		<td>".$row[4]."</td>
-		<td> link to cancellation page </td>
+		<td>".$row[5]."</td>
 		</tr>";
 	}
 
@@ -79,19 +127,19 @@ function displayGoing($connect) {
 
 function displayNotGoing($connect) {
 	print"
-	<h3> Events you're not signed up for </h3>
-	<table border = '1' width = 80%>
+	<h3> <center>Events you're not signed up for </center></h3>
+	<table align = 'center' border = '1' width = 80%>
 	<tr>
+	<th>Event ID </th>
 	<th>Event Name</th>
 	<th>Date</th>
 	<th>Start Time</th>
 	<th>End Time</th>
 	<th>Location</th>
-	<th>Sign-Up</th>
 	</tr>";
 
 	$going = "
-	SELECT Events.Name, Events.EventDate, Events.StartTime, Events.EndTime, Events.Location
+	SELECT EventID, Name, EventDate, StartTime, EndTime, Location
 	FROM Events 
 	WHERE EventID not in (SELECT EventID from Going WHERE Username = 'chironly')"; 
 
@@ -106,7 +154,7 @@ function displayNotGoing($connect) {
 		<td>".$row[2]."</td>
 		<td>".$row[3]."</td>
 		<td>".$row[4]."</td>
-		<td> link to signup page </td>
+		<td>".$row[5]."</td>
 		</tr>";
 	}
 
@@ -116,9 +164,6 @@ function displayNotGoing($connect) {
 	</table>
 	<br/><br/>";
 }
-
-
-
 
 //close connection to database
 mysqli_close($connect);
