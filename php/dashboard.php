@@ -57,8 +57,8 @@ if(isset($_POST["cancel"])){
 	}
 }
 
-if(isset($_POST["ViewSignups"])){
-	unset($_POST["ViewSignups"]);
+if(isset($_POST["ViewSignupList"])){
+	unset($_POST["ViewSignupList"]);
 	$EventID = $_POST["EventID"];
 	if(strlen($EventID) !==0){
 		displaySignups($connect, $EventID);
@@ -67,7 +67,7 @@ if(isset($_POST["ViewSignups"])){
 
 SignupCancel();
 AddEventButton();
-ViewSignups();
+ViewSignupList();
 displayGoing($connect, $username);
 displayNotGoing($connect, $username);
 
@@ -175,7 +175,7 @@ function AddEventButton() {
 	print "<button name = 'AddEvent'>Add Event</button>";
 }
 
-function ViewSignups() {
+function ViewSignupList() {
 	$script = $_SERVER['PHP_SELF'];
 
 	print<<<ViewSignups
@@ -186,7 +186,7 @@ function ViewSignups() {
 	  <td> <input type = "text" name = "EventID" /> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "ViewSignups" value = "Who Signed Up? " /> </td>
+	  <td> <input type = "submit" name = "ViewSignupList" value = "View Signup List " /> </td>
 	  </tr>
 	</table>
 	</form>
@@ -218,7 +218,6 @@ function displaySignups($connect, $EventID) {
 	$result = mysqli_query($connect, $going);
 	while ($row = $result->fetch_row())
 	{	
-
 		print"
 		<tr>
 		<td>".$row[0]."</td>
