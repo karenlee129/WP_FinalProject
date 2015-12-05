@@ -60,13 +60,17 @@ if(isset($_POST["cancel"])){
 if(isset($_POST["ViewSignups"])){
 	unset($_POST["ViewSignups"]);
 	$EventID = $_POST["EventID"];
+	if(strlen($EventID) !==0){
+		displaySignups($connect, $EventID);
+	}
 }
 
 SignupCancel();
-displayGoing($connect, $username);
-displayNotGoing($connect, $username);
 AddEventButton();
 ViewSignups();
+displayGoing($connect, $username);
+displayNotGoing($connect, $username);
+
 
 function SignupCancel(){
 	$script = $_SERVER['PHP_SELF'];
@@ -84,7 +88,6 @@ function SignupCancel(){
 	  </tr>
 	</table>
 	</form>
-	</body>
 SignupCancel;
 }
 
@@ -187,8 +190,46 @@ function ViewSignups() {
 	  </tr>
 	</table>
 	</form>
-	</body>
 ViewSignups;
+}
+
+function displaySignups($connect, $EventID) {
+	$result = mysql_query($connect, "select Name from Events where EventID = $EventID");
+	$EventName = $result->fetch_row();
+	$result->free();
+
+	$result = mysql_query($connect, "select count(Username) from Going where EventID = $EventID");
+	$numSigned = $result->fetch_row();
+	$result->free();
+
+	print"
+	<h3><center>Here is a list of people who signed up to attend event ".$EventID.":".$EventName[0]."</center></h3>
+	<h4><center>There are ".$numSigned[0]." people signed up for this event</center></h4>
+	<table align = 'center' border = '1' width = 80%>
+	<tr>
+	<th>Name</th>
+	</tr>";
+
+	$going = "
+	SELECT FName || ' ' || LName 
+	FROM Users
+	WHERE Username in (SELECT Username FROM Going WHERE EventID = $EventID)";
+
+	$result = mysqli_query($connect, $going);
+	while ($row = $result->fetch_row())
+	{	
+
+		print"
+		<tr>
+		<td>".$row[0]."</td>
+		</tr>";
+	}
+
+	$result->free();	
+
+	print"
+	</table>
+	<br/><br/>";
 }
 
 //close connection to database
