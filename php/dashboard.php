@@ -57,11 +57,9 @@ if(isset($_POST["cancel"])){
 	}
 }
 
-
-
 form();
-displayGoing($connect);
-displayNotGoing($connect);
+displayGoing($connect, $username);
+displayNotGoing($connect, $username);
 
 function form(){
 	$script = $_SERVER['PHP_SELF'];
@@ -84,8 +82,7 @@ FORM;
 }
 
 
-
-function displayGoing($connect) {
+function displayGoing($connect, $username) {
 	print"
 	<h3><center>Events you're signed up for </center></h3>
 	<table align = 'center' border = '1' width = 80%>
@@ -101,7 +98,7 @@ function displayGoing($connect) {
 	$going = "
 	SELECT Events.EventID, Events.Name, Events.EventDate, Events.StartTime, Events.EndTime, Events.Location
 	FROM Going INNER JOIN Events ON Going.EventID = Events.EventID
-	WHERE Username = 'chironly'";
+	WHERE Username = '".$username."'";
 
 	$result = mysqli_query($connect, $going);
 	while ($row = $result->fetch_row())
@@ -125,7 +122,7 @@ function displayGoing($connect) {
 	<br/><br/>";
 }
 
-function displayNotGoing($connect) {
+function displayNotGoing($connect, $username) {
 	print"
 	<h3> <center>Events you're not signed up for </center></h3>
 	<table align = 'center' border = '1' width = 80%>
@@ -141,7 +138,7 @@ function displayNotGoing($connect) {
 	$going = "
 	SELECT EventID, Name, EventDate, StartTime, EndTime, Location
 	FROM Events 
-	WHERE EventID not in (SELECT EventID from Going WHERE Username = 'chironly')"; 
+	WHERE EventID not in (SELECT EventID from Going WHERE Username = '".$username."')"; 
 
 	$result = mysqli_query($connect, $going);
 	while ($row = $result->fetch_row())
