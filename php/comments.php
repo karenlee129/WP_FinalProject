@@ -64,7 +64,7 @@ function homepage_comments(){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll" href="../index.html">Start Bootstrap</a>
+                    <a class="navbar-brand page-scroll" href="../index.html">Gather</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

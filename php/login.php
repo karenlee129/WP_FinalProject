@@ -19,11 +19,14 @@ fclose($file);
 if($verified){
     user_homepage();
 }
+
 else{
     $_SESSION['errors'] = array("Your username or password was incorrect.");
     header("Location:../index.html");
 }
-
+}
+else {
+header ("Location: ./dashboard.php");}
 
 function user_homepage(){
     print <<<PAGE
@@ -31,8 +34,7 @@ function user_homepage(){
     <h1>login success</h1>
     </html>
 PAGE;
-}}
-else {
-header ("Location: ./dashboard.php");}
+}
+
 
 ?>
