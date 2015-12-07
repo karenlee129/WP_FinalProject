@@ -26,10 +26,11 @@ if (isset($_POST["RegisterOrg"])){
 	$id = $_POST["id"];
 	$name = $_POST["name"];
 	$description = $_POST["description"];
+	$officer = $_POST["officer"];
 
-	if(strlen($id) !==0 and $strlen($name) !==0 and strlen($description) !==0){
-		$stmt = mysqli_prepare($connect, "insert into Organizations values (?, ?, ?)");
-		mysqli_stmt_bind_param($stmt, 'iss', $id, $name, $description);
+	if(strlen($id) !==0 and strlen($name) !==0 and strlen($description) !==0){
+		$stmt = mysqli_prepare($connect, "insert into Organizations values (?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, 'isss', $id, $name, $description, $officer);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 	}
@@ -55,6 +56,10 @@ function RegisterOrg(){
 	  <tr>
 	  <td> Organization Description </td>
 	  <td> <input type = "textarea" name = "description" required/> </td>
+	  </tr>
+	  <tr>
+	  <td> Officer Username </td>
+	  <td> <input type = "textarea" name = "officer" required/> </td>
 	  </tr>
 	  <tr>
 	  <td> <input type = "submit" name = "RegisterOrg" value = "Register" /> </td>

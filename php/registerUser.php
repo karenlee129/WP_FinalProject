@@ -33,11 +33,12 @@ if (isset($_POST["RegisterUser"])){
 
 	if($password==$repeatpassword){
 		$stmt = mysqli_prepare($connect, "insert into Users values (?, ?, ?, ?, ?, ?)");
-		mysqli_stmt_bind_param($stmt, 'ssssss', $username, $password, $fname, $lname, $phone, $email);
+		mysqli_stmt_bind_param($stmt, 'ssssis', $username, $password, $fname, $lname, $phone, $email);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
+		header("Location:../index.html");
 	}
-	header("Location:../index.html");
+	
 } else {
 	registerUser();
 }
