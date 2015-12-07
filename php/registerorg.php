@@ -21,14 +21,15 @@ if (empty($connect))
 }
  
 ############################################################################
-if (isset($_POST["registerorg"])){
-	unset($_POST["registerorg"]);
+if (isset($_POST["RegisterOrg"])){
+	unset($_POST["Registerorg"]);
+	$id = $_POST["id"];
 	$name = $_POST["name"];
 	$description = $_POST["description"];
 
-	if(strlen($name) !==0 and strlen($description) !==0){
-		$stmt = mysqli_prepare($connect, "insert into Organizations values (?, ?)");
-		mysqli_stmt_bind_param($stmt, 'ss', $name, $description);
+	if(strlen($id) !==0 and $strlen($name) !==0 and strlen($description) !==0){
+		$stmt = mysqli_prepare($connect, "insert into Organizations values (?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, 'iss', $id, $name, $description);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 	}
@@ -43,12 +44,16 @@ function RegisterOrg(){
 	<form action = "$script" method = "post">
 	<table border = "0">
 	  <tr>
+	  <td> Organization ID (please enter a 4-digit number) </td>
+	  <td> <input type = "number" name = "id" maxlength = "4" required/> </td>
+	  </tr>
+	  <tr>
 	  <td> Organization Name </td>
-	  <td> <input type = "text" name = "name" /> </td>
+	  <td> <input type = "text" name = "name" required/> </td>
 	  </tr>
 	  <tr>
 	  <td> Organization Description </td>
-	  <td> <input type = "textarea" name = "description" /> </td>
+	  <td> <input type = "textarea" name = "description" required/> </td>
 	  </tr>
 	  <tr>
 	  <td> <input type = "submit" name = "RegisterOrg" value = "Register" /> </td>
