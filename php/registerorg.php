@@ -1,5 +1,5 @@
 <?php
-$group = $_POST["Oname"];
+$group = $_POST["orgname"];
 $des = $_POST["Description"];
 
 $host = "fall-2015.cs.utexas.edu";
@@ -14,10 +14,10 @@ $table = "registration";
 $sql = "INSERT INTO $table VALUES (\"$group\", \"$des\")";
 
 if(mysqli_query ($connect, $sql)){
-    homepage_comments();
+    registerorg();
     }
 
-function homepage_registration(){
+function registerorg(){
     print <<<HP_Registration
     <!DOCTYPE html>
     <html lang="en">
