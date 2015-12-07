@@ -77,7 +77,7 @@ print <<<TOP
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Welcome to your dashboard!!</h1>
+                        <h1>Welcome to your dashboard!</h1>
 
 TOP;
 
@@ -103,6 +103,7 @@ if (empty($connect))
 #################################################################################
 $username = "chironly"; 
 
+#if the user clicks the signup button to sign up for an event
 if(isset($_POST["signup"])){
 	unset($_POST["signup"]);
 	$EventID = $_POST["EventID"];
@@ -114,6 +115,7 @@ if(isset($_POST["signup"])){
 	}
 }
 
+#if the user clicks the cancel button to cancel an event
 if(isset($_POST["cancel"])){
 	unset($_POST["cancel"]);
 	$EventID = $_POST["EventID"];
@@ -125,6 +127,7 @@ if(isset($_POST["cancel"])){
 	}
 }
 
+#if the user clicks the View Signup List button, function displaySignups will be called to display a list of people signed up
 if(isset($_POST["ViewSignupList"])){
 	unset($_POST["ViewSignupList"]);
 	$EventID = $_POST["EventID"];
@@ -133,6 +136,9 @@ if(isset($_POST["ViewSignupList"])){
 	}
 }
 
+#### need to edit later
+#what's visible to the user (this part will change depending on whether or not the user is an officer)
+print "Sign up or cancel for an event here:"; 
 SignupCancel();
 AddEventButton();
 ViewSignupList();
@@ -140,6 +146,7 @@ displayGoing($connect, $username);
 displayNotGoing($connect, $username);
 
 
+#form to signup or cancel for an event
 function SignupCancel(){
 	$script = $_SERVER['PHP_SELF'];
 
@@ -159,6 +166,7 @@ function SignupCancel(){
 SignupCancel;
 }
 
+#shows events the user has signed up for in tabular form
 function displayGoing($connect, $username) {
 	print"
 	<h3><center>Events you're signed up for </center></h3>
@@ -199,6 +207,7 @@ function displayGoing($connect, $username) {
 	<br/><br/>";
 }
 
+#shows events the user has not signed up for in tabular form
 function displayNotGoing($connect, $username) {
 	print"
 	<h3> <center>Events you're not signed up for </center></h3>
@@ -239,10 +248,12 @@ function displayNotGoing($connect, $username) {
 	<br/><br/>";
 }
 
+#adds a button to add an event (officers only)
 function AddEventButton() {
 	print "<button name = 'AddEvent'>Add Event</button>";
 }
 
+#form to request a list of people signed for an event(officers only)
 function ViewSignupList() {
 	$script = $_SERVER['PHP_SELF'];
 
@@ -261,25 +272,29 @@ function ViewSignupList() {
 ViewSignups;
 }
 
+###doesn't work yet
+#query to display a list of people going to a certain event (officers only)
 function displaySignups($connect, $EventID) {
-	$result = mysql_query($connect, "select Name from Events where EventID = $EventID");
+	$result = mysqli_query($connect, "select Name from Events where EventID = $EventID");
 	$EventName = $result->fetch_row();
 	$result->free();
 
-	$result = mysql_query($connect, "select count(Username) from Going where EventID = $EventID");
+	$result = mysqli_query($connect, "select count(Username) from Going where EventID = $EventID");
 	$numSigned = $result->fetch_row();
 	$result->free();
 
 	print"
-	<h3><center>Here is a list of people who signed up to attend event ".$EventID.":".$EventName[0]."</center></h3>
-	<h4><center>There are ".$numSigned[0]." people signed up for this event</center></h4>
+	<h3><center>There are $numSigned[0] people signed up for $EventName[0].</center></h3>
 	<table align = 'center' border = '1' width = 80%>
 	<tr>
-	<th>Name</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>E-mail</th>
+	<th>Phone Number</th>
 	</tr>";
 
 	$going = "
-	SELECT FName || ' ' || LName 
+	SELECT FName, LName, Email, Phone 
 	FROM Users
 	WHERE Username in (SELECT Username FROM Going WHERE EventID = $EventID)";
 
@@ -289,6 +304,9 @@ function displaySignups($connect, $EventID) {
 		print"
 		<tr>
 		<td>".$row[0]."</td>
+		<td>".$row[1]."</td>
+		<td>".$row[2]."</td>
+		<td>".$row[3]."</td>
 		</tr>";
 	}
 
