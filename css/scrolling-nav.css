@@ -46,14 +46,14 @@ of those sections to manage the look and feel of the site. */
     background: #eee;
 }
 
-.about-section {
+.create-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
     background: #fff;
 }
 
-.create-section {
+.about-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
@@ -65,4 +65,23 @@ of those sections to manage the look and feel of the site. */
     padding-top: 150px;
     text-align: center;
     background: #fff;
+}
+
+.features-box-icon {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    padding-top: 10px;
+    background: #e8643e;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    font-size: 140px;
+    color: #fff;
+    line-height: 140px;
+    text-align: center;
+}
+
+.features-box-icon span {
+    vertical-align: middle;
 }
