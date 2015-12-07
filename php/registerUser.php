@@ -37,6 +37,7 @@ if (isset($_POST["RegisterUser"])){
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 	}
+	header("Location:../index.html");
 } else {
 	registerUser();
 }

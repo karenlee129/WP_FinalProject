@@ -33,6 +33,7 @@ if (isset($_POST["RegisterOrg"])){
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 	}
+	header("Location:./dashboard.php");
 } else {
 	registerorg();
 }
