@@ -1,4 +1,6 @@
 <?php
+#<script type='text/javascript' src='./dinner.js'></script>
+#<link rel='stylesheet' type='text/css' href='./dinner.css' />
 
 $script = $_SERVER['PHP_SELF'];
 print <<<TOP
@@ -137,7 +139,6 @@ if(isset($_POST["ViewSignupList"])){
 if(isset($_POST["AddEvent"])){
 	header("Location:./AddEvent.php");
 }
-
 
 #### need to edit later
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
