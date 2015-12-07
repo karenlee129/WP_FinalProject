@@ -1,6 +1,4 @@
 <?php
-#<script type='text/javascript' src='./dinner.js'></script>
-#<link rel='stylesheet' type='text/css' href='./dinner.css' />
 
 $script = $_SERVER['PHP_SELF'];
 print <<<TOP
@@ -135,6 +133,11 @@ if(isset($_POST["ViewSignupList"])){
 		displaySignups($connect, $EventID);
 	}
 }
+
+if(isset($_POST["AddEvent"])){
+	header("Location:./AddEvent.php");
+}
+
 
 #### need to edit later
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
@@ -272,7 +275,6 @@ function ViewSignupList() {
 ViewSignups;
 }
 
-###doesn't work yet
 #query to display a list of people going to a certain event (officers only)
 function displaySignups($connect, $EventID) {
 	$result = mysqli_query($connect, "select Name from Events where EventID = $EventID");
