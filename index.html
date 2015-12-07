@@ -54,13 +54,13 @@
                         <a href="./php/dashboard.php">Dashboard Example</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="#services">Services</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#create">Get Started</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -99,10 +99,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Scrolling Nav</h1>
-                    <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+                    <h1>Welcome to Gather!</h1>
+                    <!--<p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>-->
+                    <a class="btn btn-default page-scroll" href="#create">Create Account!</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>What is Gather?</h1>
+                    <h3 class="section-subheading text-muted"> Register your organization with us today.</h3>
+                </div>
+            </div>
+            <div class="row">
+
             </div>
         </div>
     </section>
@@ -118,38 +133,21 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
+    <!-- Create Section -->
+    <section id="create" class="create-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Services Section</h1>
+                    <h1>Join Gather Today</h1>
             <h3 class="section-subheading text-muted"> Register your organization with us today.</h3>
         </div>
         </div>
-        <div class="row">
-        <div class="col-lg-12">
-            <form name="orgRegistration" id="orgRegistrationForm" method="post" action="./php/registerorg.php" novalidate>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Organinzation Name" name="orgname" required data-validation-required-message="Please enter your organization's name" />
-                        <p class="help-block text-danger"></p>
-                    </div>
+                    <button type="submit" class="btn btn-xl"><a href="./php/registerorg.php">Create Organization Account</a></button>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Organization Description" name="orgdescription" required data-validation-required-message="Please write a description for your organization" ></textarea>
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl" name = "registerorg">Register Organization</button>
-                            </div>
-            </div>
-            </form>
+                    <button type="submit" class="btn btn-xl"><a href="./php/registerUser.php">Create Member </a></button>
                 </div>
             </div>
         </div>
