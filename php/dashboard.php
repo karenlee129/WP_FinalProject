@@ -143,7 +143,7 @@ if(isset($_POST["AddEvent"])){
 #if user clicks "More Details" button
 if(isset($_POST["details"])){
 	unset($_POST["details"]);
-	$id = $_POST["id"];
+	$id = $_POST["EventID"];
 	details($connect, $id);
 }
 
@@ -151,11 +151,30 @@ if(isset($_POST["details"])){
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
 print "Sign up or cancel for an event here:"; 
 SignupCancel();
+detailsform();
 AddEventButton();
 ViewSignupList();
 displayGoing($connect, $username);
 displayNotGoing($connect, $username);
 
+#form to view event details
+function detailsform(){
+	$script = $_SERVER['PHP_SELF'];
+
+	print<<<details
+	<form action = "$script" method = "post">
+	<table border = "0">
+	  <tr>
+	  <td> Event ID </td>
+	  <td> <input type = "text" name = "EventID" /> </td>
+	  </tr>
+	  <tr>
+	  <td> <input type = "submit" name = "details" value = "View Details" /> </td>
+	  </tr>
+	</table>
+	</form>
+details;
+}
 
 #form to signup or cancel for an event
 function SignupCancel(){
@@ -205,8 +224,10 @@ function details($connect, $id) {
 
 #shows events the user has signed up for in tabular form
 function displayGoing($connect, $username) {
+	$script = $_SERVER['PHP_SELF'];
 	print"
 	<h3><center>Events you're signed up for </center></h3>
+	<form action = '$script' method = 'post'>
 	<table align = 'center' border = '1' width = 80%>
 	<tr>
 	<th>Event ID</th>
@@ -215,7 +236,6 @@ function displayGoing($connect, $username) {
 	<th>Start Time</th>
 	<th>End Time</th>
 	<th>Location</th>
-	<th>Details</th>
 	</tr>";
 
 	$going = "
@@ -229,13 +249,12 @@ function displayGoing($connect, $username) {
 
 		print"
 		<tr>
-		<td name = 'id' value = '0001'>".$row[0]."</td>
+		<td>".$row[0]."</td>
 		<td>".$row[1]."</td>
 		<td>".$row[2]."</td>
 		<td>".$row[3]."</td>
 		<td>".$row[4]."</td>
 		<td>".$row[5]."</td>
-		<td><input type = 'submit' name = 'details' value = 'View Details' /> </td>
 		</tr>";
 	}
 
@@ -243,6 +262,7 @@ function displayGoing($connect, $username) {
 
 	print"
 	</table>
+	</form>	
 	<br/><br/>";
 }
 
