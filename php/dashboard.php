@@ -140,6 +140,13 @@ if(isset($_POST["AddEvent"])){
 	header("Location:./AddEvent.php");
 }
 
+#if user clicks "More Details" button
+if(isset($_POST["details"])){
+	unset($_POST["details"]);
+	$id = $_POST["id"];
+	details($connect, $id);
+}
+
 #### need to edit later
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
 print "Sign up or cancel for an event here:"; 
@@ -170,6 +177,32 @@ function SignupCancel(){
 SignupCancel;
 }
 
+#displays details of an event given EventID
+function details($connect, $id) {
+	$ID = mysqli_real_escape_string($connect, $id);
+  	$sql = "SELECT * FROM Events WHERE EventID = '$ID';";
+
+ 	$ary = mysqli_fetch_array(mysqli_query($connect, $sql));
+  	print"
+  	<table border='1px'>
+    <tr><td colspan='2' ALIGN=CENTER>Event Info</td></tr>
+    <tr><td>"."Event Name</td><td>".$ary[1]."</td></tr>
+    <tr><td>Event Date</td><td>".$ary[2]."</td></tr>
+    <tr><td>Event Time</td><td>".$ary[3]." - ".$ary[4]."</td></tr>
+    <tr><td>Event Location</td><td>".$ary[5]."</td></tr>
+    <tr><td>Event Description</td><td>".$ary[6]."</td></tr>
+    <tr><td>Event Cost</td><td>".$ary[9]."</td></tr>";
+
+	$sql2 = "SELECT * FROM Users WHERE Username = '$ary[8]';";
+	$ary2 = mysqli_fetch_array(mysqli_query($connect, $sql2));
+	print "<tr><td>Officer's Name</td>
+    <td>".$ary2[2]." ".$ary2[3]."</td></tr>
+    <tr><td>Officer's Email</td>
+    <td>".$ary2[5]."</td></tr>
+    <tr><td>Officer's Number</td>
+    <td>".$ary2[4]."</td></tr></table>";
+}
+
 #shows events the user has signed up for in tabular form
 function displayGoing($connect, $username) {
 	print"
@@ -182,6 +215,7 @@ function displayGoing($connect, $username) {
 	<th>Start Time</th>
 	<th>End Time</th>
 	<th>Location</th>
+	<th>Details</th>
 	</tr>";
 
 	$going = "
@@ -195,12 +229,13 @@ function displayGoing($connect, $username) {
 
 		print"
 		<tr>
-		<td>".$row[0]."</td>
+		<td name = 'id' value = '0001'>".$row[0]."</td>
 		<td>".$row[1]."</td>
 		<td>".$row[2]."</td>
 		<td>".$row[3]."</td>
 		<td>".$row[4]."</td>
 		<td>".$row[5]."</td>
+		<td><input type = 'submit' name = 'details' value = 'View Details' /> </td>
 		</tr>";
 	}
 
