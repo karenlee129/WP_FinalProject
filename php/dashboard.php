@@ -105,7 +105,9 @@ if (empty($connect))
 }
 
 #################################################################################
-$username = "karenlee129"; 
+session_start();
+
+$username = $_SESSION["name"]; 
 
 $going = "
 SELECT Officer
