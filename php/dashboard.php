@@ -144,6 +144,26 @@ if(isset($_POST["AddEvent"])){
 	header("Location:./AddEvent.php");
 }
 
+#if user clicks the Delete Event button
+if(isset($_POST["delete"]))
+{
+	unset($_POST["delete"]);
+	$id = $_POST["id"];
+
+	if (strlen($id)!==0)
+	{
+		$stmt = mysqli_prepare($connect,"delete from Events where EventID = ?");
+		mysqli_stmt_bind_param($stmt, 'i', $id);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+
+		$stmt = mysqli_prepare($connect,"delete from Going where EventID = ?");
+		mysqli_stmt_bind_param($stmt, 'i', $id);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+	}	
+}
+
 #if user clicks "More Details" button
 if(isset($_POST["details"])){
 	unset($_POST["details"]);
@@ -151,15 +171,30 @@ if(isset($_POST["details"])){
 	details($connect, $id);
 }
 
+
 #### need to edit later
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
 print "Sign up or cancel for an event here:"; 
 SignupCancel();
+print"<br /><br />";
+
+print "View all the details to a particular event here:";
 detailsform();
+print"<br /><br />";
+
+print "See who's signed up for a particular event here:";
 ViewSignupList();
+print"<br /><br />";
+
 displayGoing($connect, $username);
 displayNotGoing($connect, $username);
+
+print "Add a new event here:";
 AddEventButton();
+print"<br /><br />";
+
+print "Delete an event here:";
+DeleteEventButton();
 
 #form to view event details
 function detailsform(){
@@ -180,6 +215,27 @@ function detailsform(){
 	</div>
 	</form>
 details;
+}
+
+function DeleteEventButton() {
+	$script = $_SERVER['PHP_SELF'];
+
+	print<<<DELETE
+	<form action = "$script" method = "post">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
+	  <tr>
+	  <td class="col-md-6"> Event ID </td>
+	  <td class="col-md-6"> <input type = "text" name = "id" class="form-control" /> </td>
+	  </tr>
+	  <tr>
+	  <td class="col-md-6"> <input type = "submit" class="btn btn-xl" name = "delete" value = "Delete Event" /> </td>
+	  </tr>
+	</table>
+	</div>
+	</form>
+
+DELETE;
 }
 
 #form to signup or cancel for an event
