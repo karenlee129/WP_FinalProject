@@ -73,7 +73,7 @@ print <<<TOP
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script type ="text/javascript" src ="../js/username_verify.js"></script>
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
@@ -134,7 +134,7 @@ TOP;
 	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
 	  <td class="col-md-6"> Username </td>
-	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "username" class="form-control" required/> </div> </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "username" id="username" class="form-control" onchange = "callServer();" required/> </div> </td>
 	  </tr>
 	  <tr>
 	  <td class="col-md-6"> Password</td>

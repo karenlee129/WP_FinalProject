@@ -32,7 +32,7 @@ $usernames = $result->fetch_row();
 $i = 0;
 while ($name = $usernames[$i])
 {
-	if ($username == $name){
+	if ($user == $name){
 		$officer = true;
 	}
 
