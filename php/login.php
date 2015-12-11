@@ -26,7 +26,7 @@ $pass = $_POST["pass"];
 $user_pass = $user . ':' . $pass;
 $verified = FALSE;
 
-$sql = "SELECT * FROM Users WHERE Username = '$user';";
+$sql = "SELECT Username, Password FROM Users WHERE Username = '$user';";
 $ary = mysqli_fetch_array(mysqli_query($connect, $sql));
 $line = $ary[0].':'.$ary[1];
 if($line == $user_pass){

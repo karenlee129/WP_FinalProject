@@ -126,6 +126,9 @@ while ($name = $officers[$i])
 	$i = $i + 1;
 }
 
+$username = "chironly";
+$officer = true;
+
 
 #if the user clicks the signup button to sign up for an event
 if(isset($_POST["signup"])){
