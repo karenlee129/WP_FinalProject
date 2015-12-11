@@ -17,7 +17,7 @@ while(!feof($file)){
 }
 fclose($file);
 if($verified){
-    header ("Location: ./dashboard.php");}
+    user_homepage();
 }
 
 else{
@@ -26,7 +26,7 @@ else{
 }
 }
 else {
-header("Location:../index.html");
+header ("Location: ./dashboard.php");}
 
 function user_homepage(){
     print <<<PAGE

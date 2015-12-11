@@ -156,10 +156,10 @@ if(isset($_POST["details"])){
 print "Sign up or cancel for an event here:"; 
 SignupCancel();
 detailsform();
-AddEventButton();
 ViewSignupList();
 displayGoing($connect, $username);
 displayNotGoing($connect, $username);
+AddEventButton();
 
 #form to view event details
 function detailsform(){
@@ -167,15 +167,17 @@ function detailsform(){
 
 	print<<<details
 	<form action = "$script" method = "post">
-	<table border = "0">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
-	  <td> Event ID </td>
-	  <td> <input type = "text" name = "EventID" /> </td>
+	  <td class="col-md-6"> Event ID </td>
+	  <td class="col-md-6"> <input type = "text" name = "EventID" class="form-control"/> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "details" value = "View Details" /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "details" class="btn btn-xl" value = "View Details" /> </td>
 	  </tr>
 	</table>
+	</div>
 	</form>
 details;
 }
@@ -186,16 +188,18 @@ function SignupCancel(){
 
 	print<<<SignupCancel
 	<form action = "$script" method = "post">
-	<table border = "0">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
-	  <td> Event ID </td>
-	  <td> <input type = "text" name = "EventID" /> </td>
+	  <td class="col-md-6"> Event ID </td>
+	  <td class="col-md-6"> <input type = "text" name = "EventID" class="form-control" /> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "signup" value = "Sign Up" /> </td>
-	  <td> <input type = "submit" name = "cancel" value = "Cancel" /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "signup" class="btn btn-xl" value = "Sign Up" /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "cancel" class="btn btn-xl" value = "Cancel" /> </td>
 	  </tr>
 	</table>
+	</div>
 	</form>
 SignupCancel;
 }
@@ -313,7 +317,10 @@ function displayNotGoing($connect, $username) {
 
 #adds a button to add an event (officers only)
 function AddEventButton() {
-	print "<button name = 'AddEvent'>Add Event</button>";
+	print "
+	<form action = '$script' method = 'post'>
+	<input type = 'submit' name = 'AddEvent' class='btn btn-xl' value = 'Add Event' />
+	</form>";
 }
 
 #form to request a list of people signed for an event(officers only)
@@ -322,15 +329,17 @@ function ViewSignupList() {
 
 	print<<<ViewSignups
 	<form action = "$script" method = "post">
-	<table border = "0">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
-	  <td> Event ID </td>
-	  <td> <input type = "text" name = "EventID" /> </td>
+	  <td class="col-md-6"> Event ID </td>
+	  <td class="col-md-6"> <input type = "text" name = "EventID" class="form-control" /> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "ViewSignupList" value = "View Signup List " /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "ViewSignupList" class="btn btn-xl" value = "View Signup List " /> </td>
 	  </tr>
 	</table>
+	</div>
 	</form>
 ViewSignups;
 }

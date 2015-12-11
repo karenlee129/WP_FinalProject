@@ -146,7 +146,8 @@ TOP;
 	  <td class="col-md-6"> <div class="form-group"> <input type = "textarea" name = "officer" class="form-control"  required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td ><input type = "submit" name = "RegisterOrg" class="btn btn-xl" value = "Register" /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "RegisterOrg" class="btn btn-xl" value = "Register" /> </td>
+	  <td class="col-md-6"> <input type = "reset" class="btn btn-xl" value = "Clear Form" /> </td>
 	  </tr>
 	  </div>
 	</table>
