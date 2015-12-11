@@ -107,6 +107,24 @@ if (empty($connect))
 #################################################################################
 $username = "chironly"; 
 
+$going = "
+SELECT Officer
+FROM Organizations";
+
+$officer = false;
+$result = mysqli_query($connect, $going);
+$officers = $result->fetch_row();
+$i = 0;
+while ($name = $officers[$i])
+{
+	if ($username == $name){
+		$officer = true;
+	}
+
+	$i = $i + 1;
+}
+
+
 #if the user clicks the signup button to sign up for an event
 if(isset($_POST["signup"])){
 	unset($_POST["signup"]);
@@ -171,30 +189,44 @@ if(isset($_POST["details"])){
 	details($connect, $id);
 }
 
-
-#### need to edit later
 #what's visible to the user (this part will change depending on whether or not the user is an officer)
-print "Sign up or cancel for an event here:"; 
-SignupCancel();
-print"<br /><br />";
 
-print "View all the details to a particular event here:";
-detailsform();
-print"<br /><br />";
+if (!$officer){
+	print "Sign up or cancel for an event here:"; 
+	SignupCancel();
+	print"<br /><br />";
 
-print "See who's signed up for a particular event here:";
-ViewSignupList();
-print"<br /><br />";
+	print "View all the details to a particular event here:";
+	detailsform();
+	print"<br /><br />";
 
-displayGoing($connect, $username);
-displayNotGoing($connect, $username);
+	displayGoing($connect, $username);
+	displayNotGoing($connect, $username);
 
-print "Add a new event here:";
-AddEventButton();
-print"<br /><br />";
+} else {
 
-print "Delete an event here:";
-DeleteEventButton();
+	print "Sign up or cancel for an event here:"; 
+	SignupCancel();
+	print"<br /><br />";
+
+	print "View all the details to a particular event here:";
+	detailsform();
+	print"<br /><br />";
+
+	print "See who's signed up for a particular event here:";
+	ViewSignupList();
+	print"<br /><br />";
+
+	displayGoing($connect, $username);
+	displayNotGoing($connect, $username);
+
+	print "Add a new event here:";
+	AddEventButton();
+	print"<br /><br />";
+
+	print "Delete an event here:";
+	DeleteEventButton();
+}
 
 #form to view event details
 function detailsform(){
