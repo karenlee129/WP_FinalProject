@@ -73,7 +73,7 @@ print <<<TOP
         <!-- /.container -->
     </nav>
     <!-- Intro Section -->
-            <section id="intro" class="intro-section">
+            <section id="intro" class="intro-section_ud">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">

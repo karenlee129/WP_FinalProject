@@ -59,6 +59,16 @@ of those sections to manage the look and feel of the site. */
     color: white;
 }
 
+.intro-section_ud {
+    height: 250%;
+    padding-top: 150px;
+    text-align: center;
+    background-image: url("../img/index_bg.jpg");
+    background-repeat: repeat-y;
+    background-color:rgba(255,0,0,0.5);
+    color: white;
+}
+
 .services-section {
     height: 100%;
     padding-top: 150px;
@@ -98,7 +108,6 @@ of those sections to manage the look and feel of the site. */
     margin: 0 auto;
     padding-top: 10px;
     background: #e8643e;
-    background-image: url("../img/karen.jpg");
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
