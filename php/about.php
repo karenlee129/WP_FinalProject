@@ -82,6 +82,9 @@ print <<<TOP
                 <div class="row">
                     <div class="col-lg-12 text-center">
                             <h1 class="section-heading">About Our Team</h1>
+                            <h4 class="service-heading"> We are a group of UT students earning our Elements of Computing Certificate, 
+                            in addition to our respective degrees. We hope to use our interest in web programming to build a 
+                            website that helps both students and professional manage organization events.</h4><br/>
                             <h3 class="section-subheading text-muted">--------------</h3>
                         </div>
                     </div>
@@ -98,21 +101,21 @@ TOP;
                     <span aria-hidden="true" class="arrow_up"></span>
                 </div>
                 <h4 class="service-heading">Karen Lee</h4>
-                <p class="text-muted"></p>
+                <p class="text-muted">Third-year Masters of Professional Accounting</p>
             </div>
             <div class="col-md-4">
                 <div class="features-box-icon">
                     <span aria-hidden="true" class="arrow_down"></span>
                 </div>
                 <h4 class="service-heading">Ronly Leung</h4>
-                <p class="text-muted"></p>
+                <p class="text-muted">Fourth-year in Mathematics</p>
             </div>
             <div class="col-md-4">
                 <div class="features-box-icon">
                     <span aria-hidden="true" class="arrow_left"></span>
                 </div>
                 <h4 class="service-heading">Malachi Williams</h4>
-                <p class="text-muted"></p>
+                <p class="text-muted">Fourth-year in Physics and Astronomy</p>
             </div>
         </div>
 
