@@ -26,7 +26,7 @@ print <<<TOP
     <link href="../css/scrolling-nav.css" rel="stylesheet">
 
     <!-- Icon CSS -->
-    <link rel="stylesheet" href="css/elegant_font/style.css">
+    <link rel="stylesheet" href="../css/elegant_font/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,13 +62,13 @@ print <<<TOP
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="./about.php">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Services</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="./contact.php">Contact</a>
                     </li>
                 </ul>
             </div>

@@ -97,13 +97,13 @@ print <<<TOP
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="./about.php">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Services</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="./contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
