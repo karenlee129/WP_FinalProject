@@ -98,6 +98,7 @@ of those sections to manage the look and feel of the site. */
     margin: 0 auto;
     padding-top: 10px;
     background: #e8643e;
+    background-image: url("../img/karen.jpg");
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
