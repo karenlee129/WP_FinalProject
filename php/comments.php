@@ -112,7 +112,7 @@ function homepage_comments(){
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Thank you for you feedback!!</h1>
+                        <h1>Thank you for your feedback!!</h1>
                     </div>
                 </div>
             </div>

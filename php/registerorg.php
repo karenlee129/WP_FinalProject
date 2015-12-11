@@ -115,39 +115,47 @@ print <<<TOP
         <section id="intro" class="intro-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Organization Account Registration</h1>
+                    <div class="col-lg-12 text-center">
+                            <h1 class="section-heading">Organization Account Registration</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
 
 TOP;
 
 	print<<<Register
 	<form action = "$script" method = "post">
-	<table border = "0">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
-	  <td> Organization ID (please enter a 4-digit number) </td>
-	  <td> <input type = "number" name = "id" maxlength = "4" required/> </td>
+	  <td class="col-md-6"> Organization ID (please enter a 4-digit number) </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "number" name = "id" class="form-control"  maxlength = "4" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Organization Name </td>
-	  <td> <input type = "text" name = "name" required/> </td>
+	  <td class="col-md-6"> Organization Name </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "name" class="form-control"  required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Organization Description </td>
-	  <td> <input type = "textarea" name = "description" required/> </td>
+	  <td class="col-md-6"> Organization Description </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "textarea" name = "description" class="form-control"  required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Officer Username </td>
-	  <td> <input type = "textarea" name = "officer" required/> </td>
+	  <td class="col-md-6"> Officer Username </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "textarea" name = "officer" class="form-control"  required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "RegisterOrg" value = "Register" /> </td>
+	  <td ><input type = "submit" name = "RegisterOrg" class="btn btn-xl" value = "Register" /> </td>
 	  </tr>
+	  </div>
 	</table>
+	</div>
 	</form>
 Register;
 
 print <<<BOTTOM
-</div>
+                </div>
             </div>
         </div>
     </section>

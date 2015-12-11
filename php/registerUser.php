@@ -116,50 +116,56 @@ print <<<TOP
         <!-- /.container -->
     </nav>
     <!-- Intro Section -->
-        <section id="intro" class="intro-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>User Account Creation</h1>
+            <section id="intro" class="intro-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                                <h1 class="section-heading">User Account Registration</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
 
 TOP;
 
 	print<<<Register
 	<form action = "$script" method = "post">
-	<table border = "0">
+	<div class = "row">
+	<table border = "0" class = "col-lg-12 table-centered">
 	  <tr>
-	  <td> Username </td>
-	  <td> <input type = "text" name = "username" required/> </td>
+	  <td class="col-md-6"> Username </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "username" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Password</td>
-	  <td> <input type = "text" name = "password" required/> </td>
+	  <td class="col-md-6"> Password</td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "password" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Repeat Password</td>
-	  <td> <input type = "text" name = "repeatpassword" required/> </td>
+	  <td class="col-md-6"> Repeat Password</td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "repeatpassword" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> First Name </td>
-	  <td> <input type = "text" name = "fname" required/> </td>
+	  <td class="col-md-6"> First Name </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "fname" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Last Name </td>
-	  <td> <input type = "text" name = "lname" required/> </td>
+	  <td class="col-md-6"> Last Name </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "text" name = "lname" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> Phone Number </td>
-	  <td> <input type = "tel" name = "phone" required/> </td>
+	  <td class="col-md-6"> Phone Number </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "tel" name = "phone" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> E-mail </td>
-	  <td> <input type = "email" name = "email" required/> </td>
+	  <td class="col-md-6"> E-mail </td>
+	  <td class="col-md-6"> <div class="form-group"> <input type = "email" name = "email" class="form-control" required/> </div> </td>
 	  </tr>
 	  <tr>
-	  <td> <input type = "submit" name = "RegisterUser" value = "Register" /> </td>
-	  <td> <input type = "reset" value = "Clear Form" /> </td>
+	  <td class="col-md-6"> <input type = "submit" name = "RegisterUser" class="btn btn-xl" value = "Register" /> </td>
+	  <td class="col-md-6"> <input type = "reset" class="btn btn-xl" value = "Clear Form" /> </td>
 	  </tr>
 	</table>
+	</div>
 	</form>
 Register;
 

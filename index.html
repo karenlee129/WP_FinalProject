@@ -54,16 +54,16 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="./php/dashboard.php">Dashboard Example</a>
+                        <a class="page-scroll" href="#services">Services</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#create">Get Started</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#create">Get Started</a>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -73,21 +73,13 @@
                                 <table border = "0">
                                     <tr>
                                         <td> Username : </td>
-                                        <td> <input type = "text" name = "user" id = "r_user" size = "20"/> </td>
+                                        <td> <div class="form-group"> <input type = "text" name = "user" id = "r_user" class="form-control" size = "20"/> </div> </td>
                                         <td> Password : </td>
-                                        <td> <input type = "password" name = "pass" size = "20"/> </td>
-                                        <td> <input type = "submit" value = "Login" id="sub" disabled="disabled"/> </td>
+                                        <td> <div class="form-group"> <input type = "password" name = "pass" class="form-control" size = "20"/> </div> </td>
+                                        <td> <input type = "submit" value = "Login" id="sub" class="btn btn-xl" disabled="disabled"/> </td>
                                     </tr>
                                 </table>
                             </form>
-                            <?php session_start(); ?>
-                            <?php if (isset($_SESSION['errors'])): ?>
-                            <div class="form-errors">
-                                <?php foreach($_SESSION['errors'] as $error): ?>
-                                <p><?php echo $error ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php endif; ?>
                         </a>
                     </li>
                 </ul>

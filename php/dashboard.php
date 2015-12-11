@@ -73,11 +73,15 @@ print <<<TOP
         <!-- /.container -->
     </nav>
     <!-- Intro Section -->
-        <section id="intro" class="intro-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Welcome to your dashboard!</h1>
+            <section id="intro" class="intro-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                                <h1 class="section-heading">Welcome To Your Dashbaord!!</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
 
 TOP;
 
